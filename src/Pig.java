@@ -26,25 +26,31 @@ public class Pig {
 
     // Implement your solution here!
     public static String pigLatin(String sentence) {
-        return null;
+        String[] words = sentence.split(" ");  // Split the sentence into words
+        String result = "";  
+
+        // Loop through each word in the sentence
+        for (String word : words) {
+            // Check if the word starts with a vowel
+            if (word.startsWith("a") || word.startsWith("e") || word.startsWith("i") 
+                || word.startsWith("o") || word.startsWith("u")) {
+                result += word + " ";  // If it starts with a vowel, add the word as is
+            } else {
+                // Move the first letter to the end and add "ay"
+                result += word.substring(1) + word.charAt(0) + "ay" + " ";
+            }
+        }
+
+        // Trim the final result to remove any trailing spaces
+        return result.trim();
     }
-
-
-
-
-
-
-
-
 
     // Method to help with testing, you do not need to read this.
     public static void assertEqual(int testNumber, String actual, String expected) {
         if (!expected.equals(actual)) {
-        System.out.println("Test " + testNumber + " failed! Expected: '" + expected + "', but got: '" + actual + "'");
+            System.out.println("Test " + testNumber + " failed! Expected: '" + expected + "', but got: '" + actual + "'");
         } else {
-        System.out.println("Test " + testNumber + " passed!");
+            System.out.println("Test " + testNumber + " passed!");
         }
     }
-    }
-  
-  
+}

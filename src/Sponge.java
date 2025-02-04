@@ -11,15 +11,9 @@ public class Sponge {
    * spongeCase("spongebob")  should return "sPoNgEbOb"
    * spongeCase("Who are YOU calling A Pinhead")  should return "wHo aRe yOu cAlLiNg a pInHeAd"
    * spongeCase("WHAT is UP my dude")  should return "wHaT iS uP mY dUdE"
-   * spongeCase("debí tirar más fotos") should return dEbÍ tIrAr mÁs fOtOs" (note the accents)
+   * spongeCase("debí tirar más fotos") should return "dEbÍ tIrAr mÁs fOtOs" (note the accents)
    * spongeCase("E")  should return "e"
    * spongeCase("e")  should return "e"
-   * 
-   * Hints:
-   * There exist the following methods in java:
-   * Character.toUpperCase() (e.g. Character.toUpperCase('f'))
-   * Character.toLowerCase() (e.g. Character.toLowerCase('Q'))
-   * .toCharArray() String method (e.g. myString.toCharArray())
    */
   public static void main(String[] args) {
     // Test cases
@@ -33,9 +27,34 @@ public class Sponge {
 
   // Implement your solution here!
   public static String spongeCase(String sentence) {
-    return null;
-  }
+    String[] words = sentence.split(" ");  // Split the sentence into words
+    String result = "";  
 
+    // Loop through each word in the sentence
+    for (String word : words) {
+      char[] chars = word.toCharArray();  // Convert the word to a character array
+      String wordResult = "";  
+      
+
+      // Loop through each character in the word
+      for (int i = 0; i < chars.length; i++) {
+
+
+        // If the index is even, make the letter lowercase; if odd, make it uppercase
+        if (i % 2 == 0) {
+          wordResult += Character.toLowerCase(chars[i]);
+        } else {
+          wordResult += Character.toUpperCase(chars[i]);
+        }
+      }
+
+      // Add the transformed word to the result string, followed by a space
+      result += wordResult + " ";
+    }
+
+    // Trim the final result to remove any trailing spaces
+    return result.trim();
+  }
 
   // Method to help with testing, you do not need to read this.
   public static void assertEqual(int testNumber, String actual, String expected) {
